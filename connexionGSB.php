@@ -3,6 +3,7 @@ include("includes/conBDD.php");
 ?>
 
 <?php
+	session_cache_limiter('private_no_expire, must-revalidate'); //eviter lsg document à expirer 
 	session_start();
 ?>
 <?php
@@ -76,10 +77,148 @@ try {
 			$_SESSION['dateEmbauche'] = $lignes[6];
 			$connecte = true;
 				echo "<h2>Connecté</h2>";
-				echo "<p>Bonjour ".$_SESSION['prenom']." ".$_SESSION['nom']." " . ",vous êtes bien connecté(e)</p>";
+				echo "<p>Bonjour ".$_SESSION['prenom']." ".$_SESSION['nom']." " . ", vous êtes connecté(e)</p>";
 				?>
-				<a href="index.html"><p>Retour à l'accueil</a></p>";
+				<a href="index.html"><p>Retour à l'accueil</a></p>
 				<?php
+				
+// ----------------------------------------------------------------------
+				?>
+<?php
+include("includes/conBDD.php");
+?>
+
+<?php
+	// session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=yes" />
+    <meta charset="utf-8"/>
+    <title>page protéger</title>
+    <link rel="stylesheet" href="protectGSB.css"/>
+    <script src="script.js"></script>
+	<link type="image/x-icon" href="logoGSB.JPG" rel="icon"/>
+    <style type="text/css"> 
+		a:link { text-decoration:none; } 
+	</style>
+</head>
+<body>
+
+<?php
+	if($_SESSION['login'] == true){
+?>	
+	
+<div style="text-align:center">
+	<table border="1px">
+		<!-- <caption> Action </caption> --> 
+			<thead> <!--En tête du tableau -->
+			<tr>
+				<th>Consulter</th>
+				<th>Ajouter</th>
+				<th>Supprimer</th>
+				<th>Modifier</th>
+			</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+						<a href="http://localhost/priveConsulterVisiteursGSB.php">
+							<h4>Consulter visiteurs</h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveAjouterVisiteursGSB.php">
+							<h4>Ajouter des visiteurs</h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveSupprimerVisiteursGSB.php">
+							<h4>Supprimer des visiteurs</h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveModifierVisiteursGSB.php">
+							<h4>Modifier les visiteurs</h4>
+						</a>
+					</td>
+				</tr>
+	
+				<tr>
+					<td>
+						<a href="http://localhost/priveConsulterFraisForfaitGSB.php">
+							<h4>Consulter frais </h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveAjouterFraisForfaitGSB.php">
+							<h4>Ajouter frais </h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveSupprimerFraisForfaitGSB.php">
+							<h4>Supprimer frais </h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveModifierFraisForfaitGSB.php">
+							<h4>Modifier frais </h4>
+						</a>
+					</td>
+				</tr>
+	
+				<tr>
+					<td>
+						<a href="http://localhost/priveConsulterEtatGSB.php">
+							<h4>Consulter etat </h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveAjouterEtatGSB.php">
+							<h4>Ajouter etats</h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveSupprimerEtatGSB.php">
+							<h4>Supprimer etats</h4>
+						</a>
+					</td>
+					<td>
+						<a href="http://localhost/priveModifierEtatGSB.php">
+							<h4>Modifier etats</h4>
+						</a>
+					</td>
+				</tr>
+			</tbody>
+	
+	</table>
+</div>	
+</br>
+	<?php
+}
+else{
+	?>
+		<h6>Autorisation refusé </h6>
+		<a href="http://localhost/connexionGSB.php">
+		<h6>Réessayer</h6>
+		</a>
+	<?php
+}
+
+
+?>
+
+
+</body>
+</html>
+				
+				
+	
+<?php				
+				
+// ----------------------------------------------------------------------				
 	}
 	else {
 		echo '<script type="text/javascript">alert("Impossible de vous connecter.");</script>';
@@ -117,21 +256,11 @@ if(!$connecte){
 	</fieldset>
 </div>
 
-<?php/* 
+<?php
 } 
-*/?>
+?>
 
 
 </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
- 
