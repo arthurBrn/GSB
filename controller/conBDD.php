@@ -15,6 +15,14 @@ function connexion(){
 	require "/views/connexionGSB.php";
 }
 
+function tableauAdmin(){
+	require "/views/tableauAdmin.php";
+}
+
+
+function inscriptionReussi(){
+	require "/views/envoyerGSB.php";
+}
 
 function testConnect(){
 // Fonction qui permet de faire la connexion avec la base de donnée 
