@@ -36,7 +36,9 @@ if((isset($_POST['idVisiteurs'])) && (isset($_POST['nom'])) && (isset($_POST['pr
 	inscriptionReussi();
 }
 
-	
+
+
+//Pour la page connexion 
 $connecte = false;
 try{
 	if(isset($_POST['deconnexion']) && $_POST['deconnexion'] == "Deconnexion"){
@@ -73,11 +75,7 @@ try{
 				<a href="../views/tableauAdmin.php"><p>Tableau d'administration</p></a>
 				<?php
 		}
-				
-			
-				
-// ----------------------------------------------------------------------				
-	
+						
 	else {
 		echo '<script type="text/javascript">alert("Impossible de vous connecter.");</script>';
 	}

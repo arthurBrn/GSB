@@ -52,6 +52,65 @@ $req->execute(array(
 
 // fonctions concernant les visiteurs 
 function consulterVisiteurs(){
+	?>
+	<h5>Liste visiteurs : </h5>
+	<?php
+	
+	//Upper --> fonction qui met le paramètre en majuscule 
+	//as --> aliace
+		$reponse = $bdd->query('SELECT UPPER(nom) as nom_Maj, idVisiteurs, prenom, login, mdp, adresse, cp, ville, dateEmbauche FROM visiteur');
+
+		if($reponse){
+			while($donnee = $reponse->fetch()){
+	?>
+				<table colspan = 2>
+					<tr>
+						<th>Numéro</th>
+						<td><?php echo $donnee['idVisiteurs'];?></td>
+					</tr>
+					<tr>
+						<th>Nom</th>
+						<td><?php echo $donnee['nom_Maj']; ?></td>
+					</tr>
+					<tr>
+						<th>Prénom</th>
+						<td> <?php echo $donnee['prenom']; ?></td>
+					</tr>
+					<tr>
+						<th>Login</th>
+						<td><?php echo $donnee['login']; ?></td>
+					</tr>
+					<tr>
+						<th>Mot de passe</th>
+						<td><?php echo $donnee['mdp']; ?> </td>
+					</tr>
+					<tr>
+						<th>Adresse</th>
+						<td><?php echo $donnee['adresse']; ?></td>
+					</tr>
+					<tr>
+						<th>Code postale</th>
+						<td><?php echo $donnee['cp'];?></td>
+					</tr>
+					<tr>
+						<th>Ville</th>
+						<td><?php echo $donnee['ville'];?></td>
+					</tr>
+					<tr>
+						<th>Date de l'embauche</th>
+						<td><?php echo $donnee['dateEmbauche'];?></td>
+					</tr>
+				</table>
+	<p>____________________________________________________________________________________________________________________________________________________</p>
+	<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
+	<p>______________________________________________________________________________________</p>
+	<?php
+			}		
+
+		}		
+		else{
+			echo "Aucune donnée enregistrer";
+		}
 }
 
 function ajouterVisiteurs(){

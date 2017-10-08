@@ -35,7 +35,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<a href="../models/Consulter/priveConsulterVisiteursGSB.php">
+						<a href="../views/Consulter/consulterVisiteurs.php">
 							<h4>Consulter visiteurs</h4>
 						</a>
 					</td>
