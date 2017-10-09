@@ -35,7 +35,7 @@
 			<tbody>
 				<tr>
 					<td>
-						<a href="../views/Consulter/consulterVisiteurs.php">
+						<a href="../views/consulterVisiteurs.php">
 							<h4>Consulter visiteurs</h4>
 						</a>
 					</td>

@@ -2,7 +2,7 @@
 <?php
 
 
-require "../models/modele.php";
+require "/models/modele.php";
 
 // Fonction qui renvoie directement à l'accueil du site 
 function accueil(){
@@ -39,22 +39,56 @@ function envoyer(){
 }
 
 
+// Fonction pour visiteurs 
+
 function consVisiteurs(){
 	consulterVisiteurs();
 }
-
-
-function ajouter(){
-	
+function ajoutVisiteurs(){
+	ajouterVisiteurs();
+}
+function modifVisiteurs(){
+	modifierVisiteurs();
+}
+function suppVisiteurs(){
+	supprimerVisiteurs();
 }
 
-function supprimer(){
-	
+
+
+
+// Fonction pour frais  
+
+function conFrais(){
+	consulterFrais();
+}
+function ajoutFrais(){
+	ajouterFrais();
+}
+function modifFrais(){
+	modifierFrais();
+}
+function suppFrais(){
+	supprimerFrais();
 }
 
-function modifier(){
-	
+
+//Fonctiokn pour etat 
+
+function conEtat(){
+	consulterEtat();
 }
+function ajoutEtat(){
+	ajouterEtat();
+}
+function modifEtat(){
+	modifierEtat();
+}
+function suppEtat(){
+	supprimerEtat();
+}
+
+
 
 
 function inscription(){

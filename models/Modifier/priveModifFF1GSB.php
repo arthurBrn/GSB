@@ -24,18 +24,6 @@ include("includes/conBDD.php")
 		</a>
 	</div>
 	
-<?php 
-$modif = $bdd->prepare('UPDATE fraisforfait SET libelle = ?, montant = ? WHERE idFraisForfait = ?');
-$modif->execute(array(
-$_POST['libelle'],
-$_POST['montant'],
-$_POST['idFraisForfait']
-));
-?>
-
-<p>Le frais numéro <?php echo $_POST['idFraisForfait'];?> à bien été modifier</p>
-<?php 
-	$modif->closeCursor();
-?>
+<!-- code php de modifier frais ici avant --> 
 </body>
 </html>

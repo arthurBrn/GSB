@@ -24,23 +24,6 @@ include("../controller/conBDD.php");
 		</a>
 	</div>
 	
-	<?php
-	$modif = $bdd->prepare('UPDATE visiteur SET nom = ?, prenom = ?, login = ?, mdp = ?, adresse = ?, cp = ?, ville = ?, dateEmbauche = NOW() WHERE idVisiteurs = ?');
-	$modif->execute(array(
-	$_POST['nom'],
-	$_POST['prenom'],
-	$_POST['login'],
-	$_POST['mdp'],
-	$_POST['adresse'],
-	$_POST['cp'],
-	$_POST['ville'],
-	$_POST['idVisiteurs']
-	));
-	?>
-	
-	<p>Le visiteur numéro <?php echo $_POST['idVisiteurs'];?> à bien été mofidier</p>
-<?php 
-	$modif->closeCursor();
-?>
+<!-- code PHP de modifier visiteurs avant ici --> 
 </body>
 </html>

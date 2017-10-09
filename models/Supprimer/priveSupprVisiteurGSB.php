@@ -26,15 +26,7 @@ include("../controller/conBDD.php");
 		</a>
 	</div>
 	
-	
-<?php
-$req = $bdd->prepare('DELETE FROM visiteur WHERE idVisiteurs = ?');
-$req->execute(array(
-	$_POST['idVisiteurs'])) ?>
-	
-<p> Le visiteur numéro <?php echo $_POST['idVisiteurs']; ?> à bien été suprrimer de la base de données </p>
-<?php 
-	$req->closeCursor();
-?>
+<!-- code php de modifier visiteurs avant ici --> 	
+
 </body>
 </html>

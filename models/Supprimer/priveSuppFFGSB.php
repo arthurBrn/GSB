@@ -26,17 +26,7 @@ include("../controller/conBDD.php");
 		</a>
 	</div>
 	
-<?php
-$req = $bdd->prepare('DELETE FROM fraisforfait WHERE idFraisForfait = ?');
-$req->execute(array(
-	$_POST['idFraisForfait']
-))
-?>
-
-<p>Le frais numéro <?php echo $_POST['idFraisForfait']; ?> à bien été supprimer </p>
-<?php 
-	$req->closeCursor();
-?>
+<!-- code de supprimer frais avant ici --> 
 
 </body>
 </html>

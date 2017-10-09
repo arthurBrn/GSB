@@ -25,14 +25,6 @@ require("../controller/conBDD.php");
 		</a>
 	</div>
 	
-<?php 
-$req = $bdd->prepare('DELETE FROM etat WHERE idEtat = ?');
-$req->execute(array(
-	$_POST['idEtat']
-))
-?>
-
-<p>L'etat numéro <?php echo $_POST['idEtat']; ?> à bien été supprimer </p>
-
+<!-- code de supp etat gsb avant ici --> 
 </body>
 </html>

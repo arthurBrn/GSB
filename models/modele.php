@@ -50,7 +50,7 @@ $req->execute(array(
 
 }
 
-// fonctions concernant les visiteurs 
+//Consulter visiteurs 
 function consulterVisiteurs(){
 	?>
 	<h5>Liste visiteurs : </h5>
@@ -58,6 +58,8 @@ function consulterVisiteurs(){
 	
 	//Upper --> fonction qui met le paramètre en majuscule 
 	//as --> aliace
+	
+	//Prépare la requête 
 		$reponse = $bdd->query('SELECT UPPER(nom) as nom_Maj, idVisiteurs, prenom, login, mdp, adresse, cp, ville, dateEmbauche FROM visiteur');
 
 		if($reponse){
@@ -113,67 +115,150 @@ function consulterVisiteurs(){
 		}
 }
 
+
+//Ajouter visiteurs 
 function ajouterVisiteurs(){
 //Marche uniquement si tous les champs sont correctement rempli 
 //Mais n'affiche pas de messages d'erreurs si les champs sont mal rempli
-if(isset($_POST['idVisiteurs']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['ville'])){
-$req = $bdd->prepare('INSERT INTO Visiteur(idVisiteurs, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
-$req->execute(array(
-	$_POST['idVisiteurs'],
-	$_POST['nom'],
-	$_POST['prenom'],
-	$_POST['login'],
-	$_POST['mdp'],
-	$_POST['adresse'],
-	$_POST['cp'],
-	$_POST['ville']));
+
+// Vérifie que les champs soient vérifier et non null
+	if(isset($_POST['idVisiteurs']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['ville'])){
+		// Prépare la requête d'ajout 
+		$req = $bdd->prepare('INSERT INTO Visiteur(idVisiteurs, nom, prenom, login, mdp, adresse, cp, ville, dateEmbauche) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())');
+			//Recupère les informations à ajouter et exécute la requête 
+		$req->execute(array(
+			$_POST['idVisiteurs'],
+			$_POST['nom'],
+			$_POST['prenom'],
+			$_POST['login'],
+			$_POST['mdp'],
+			$_POST['adresse'],
+			$_POST['cp'],
+			$_POST['ville']));
+	}
 }
+//Modifier visiteurs 
+function modifierVisiteurs(){
+	// Prépare la requête de modification 
+	$modif = $bdd->prepare('UPDATE visiteur SET nom = ?, prenom = ?, login = ?, mdp = ?, adresse = ?, cp = ?, ville = ?, dateEmbauche = NOW() WHERE idVisiteurs = ?');
+		//Récupère les informations à modifier dans un tableau array et exécute la requête 
+		$modif->execute(array(
+			$_POST['nom'],
+			$_POST['prenom'],
+			$_POST['login'],
+			$_POST['mdp'],
+			$_POST['adresse'],
+			$_POST['cp'],
+			$_POST['ville'],
+			$_POST['idVisiteurs']
+		));
+	?>
+	<p>Le visiteur numéro <?php echo $_POST['idVisiteurs'];?> à bien été mofidier</p>
+	<?php
+} 
+
+//Supprimer visiteurs 
+function supprimerVisiteurs(){
+	// Prépare la requête de suppression 
+$req = $bdd->prepare('DELETE FROM visiteur WHERE idVisiteurs = ?');
+		//Récupère les informations à modifier et exécute la requête 
+	$req->execute(array(
+		$_POST['idVisiteurs'])) ?>
+<p> Le visiteur numéro <?php echo $_POST['idVisiteurs']; ?> à bien été suprrimer de la base de données </p>
+<?php
+	
 }
-function modifierVisiteurs(){}
-function supprimerVisiteurs(){}
 
 
 
 // Functions concernant les frais 
 function consulterFrais(){
+	//Pas fini 
 $reponse = $bdd->query('SELECT * FROM FraisForfait WHERE mois = ? AND idVisiteurs = ?');
 $reponse->execute(array(
-
-
 ));
-while($donnee = $reponse->fetch()){
-	?>
-	<p>Numéro frais forfait : <?php echo $donnee['idFraisForfait'];?></p>
-	<p>libelle : <?php echo $donnee['libelle'];?></p>
-	<p>Montant : <?php echo $donnee['montant'];?></p>
-	<p>####################</p>
+	while($donnee = $reponse->fetch()){
+		?>
+		<p>Numéro frais forfait : <?php echo $donnee['idFraisForfait'];?></p>
+		<p>libelle : <?php echo $donnee['libelle'];?></p>
+		<p>Montant : <?php echo $donnee['montant'];?></p>
+		<p>####################</p>
+	<?php
+	}
+}
+
+
+// Ajouter frais 
+function ajouterFrais(){
+	//Prépare la requête d'ajout 
+	$req = $bdd->prepare('INSERT INTO fraisforfait(idFraisForfait, libelle, montant) VALUES(?, ?, ?)');
+		//Récupère les informations à ajouter et exécute la requête 
+		$req->execute(array(
+		$_POST['idFraisForfait'],
+		$_POST['libelle'],
+		$_POST['montant']));
+	}
+
+//Modifier frais 
+function modifierFrais(){
+	// Prépare la requête de modification 
+$modif = $bdd->prepare('UPDATE fraisforfait SET libelle = ?, montant = ? WHERE idFraisForfait = ?');
+		// Récupère les informations à modifier et exécute la requête 
+	$modif->execute(array(
+		$_POST['libelle'],
+		$_POST['montant'],
+		$_POST['idFraisForfait']
+	));
+?>
+<p>Le frais numéro <?php echo $_POST['idFraisForfait'];?> à bien été modifier</p>
 <?php
 }
+
+
+// Fonction supprimer frais
+function supprimerFrais(){
+	// preparation de la requete 
+$req = $bdd->prepare('DELETE FROM fraisforfait WHERE idFraisForfait = ?');
+		// récupère le numéro de l'atat à supprimer et exécute la requête 
+	$req->execute(array(
+		$_POST['idFraisForfait']
+	));
+?>
+<!-- confirmation du frais supprimer -->
+<p>Le frais numéro <?php echo $_POST['idFraisForfait']; ?> à bien été supprimer </p>
+<?php 
 }
-
-
-
-function ajouterFrais(){
-	$req = $bdd->prepare('INSERT INTO fraisforfait(idFraisForfait, libelle, montant) VALUES(?, ?, ?)');
-$req->execute(array(
-	$_POST['idFraisForfait'],
-	$_POST['libelle'],
-	$_POST['montant']));
-}
-
-
-function modifierFrais(){}
-
-
-function supprimerFrais(){}
-
 
 // Fonctions concernant les etats 
-function consulterEtat(){}
+function consulterEtat(){
+	//préaration de la requête 
+$reponse = $bdd->query('SELECT * FROM Etat');
+		// boucle while pour parcourir la table dans la bdd et afficher chaque etat 
+	while($donnee = $reponse->fetch()){
+		?>
+		<table colspan = 2>
+			<tr>
+				<th>Numéro</th>
+					<td><?php echo $donnee['idEtat'];?></td>
+				</th>
+			</tr>
+			<tr>
+				<th>Libelle</th>
+					<td><?php echo $donnee['libelle'];?></td>
+			</tr>
+		</table>
+	<p>____________________________________________________________________________________________________________________________________________________</p>
+	<p>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </p>
+	<p>______________________________________________________________________________________</p>	
+	<?php
+	}
+}
 
-
+// Ajouter etat 
 function ajouterEtat(){
-	$req = $bdd->prepare('INSERT INTO etat(idEtat, libelle) VALUES(?, ?)');
+	//Préparation de la requete d'insertion des données 
+$req = $bdd->prepare('INSERT INTO etat(idEtat, libelle) VALUES(?, ?)');
+		// Récupère les données rentrer et exécute la requête 
 	$req -> execute(array(
 		$_POST['idEtat'],
 		$_POST['libelle']
@@ -181,17 +266,30 @@ function ajouterEtat(){
 }
 
 
+// Modifier etat 
 function modifierEtat(){
-	$modif = $bdd->prepare('UPDATE etat SET libelle = ? WHERE idEtat = ?');
+	// Préparation de la requête de modification 
+$modif = $bdd->prepare('UPDATE etat SET libelle = ? WHERE idEtat = ?');
+	//Récupère les données à modifier et exécute la requête 
 	$modif->execute(array(
 		$_POST['libelle'],
 		$_POST['idEtat']
 	));
 }
-function supprimerEtat(){}
 
 
-
+//Supprimer etat 
+function supprimerEtat(){
+	//Prépare la requête de suppression
+$req = $bdd->prepare('DELETE FROM etat WHERE idEtat = ?');
+		// Récupère le numéro etat et exécute la requête 
+	$req->execute(array(
+		$_POST['idEtat']
+	));
+?>
+<p>L'etat numéro <?php echo $_POST['idEtat']; ?> à bien été supprimer </p>
+<?php
+}
 
 ?>
 
