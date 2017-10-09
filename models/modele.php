@@ -24,6 +24,22 @@ function bdd(){
 	}
 }
 
+
+
+function testConnexion(){
+		$source = "mysql:host=localhost;dbname=gsbV2";
+		$utilisateur = "root";
+		$mot_de_passe = "fdbcounter";
+		$db = new PDO($source, $utilisateur, $mot_de_passe);
+		$sql_select = "SELECT idVisiteurs, nom, prenom, adresse, cp, ville, dateEmbauche FROM visiteur WHERE login='".$_POST['txtLogin']."' AND mdp='".$_POST['txtMdp']."';";
+		$st = $db->prepare($sql_select);
+		$st->execute();
+		$lignes = $st->fetch();
+		
+		return $lignes;
+}
+
+
 // requete sql pour envoyer les données rentrer par le visiteur dans inscriptions
 function envoyerGSB(){
 	try{
@@ -151,9 +167,6 @@ function ajouterVisiteurs(){
 			$_POST['cp'],
 			$_POST['ville']));
 	}
-	?>
-	<p> Le visiteur numéro <?php echo $_POST['idVisiteurs']; ?> à bien été ajouter de la base de données </p>
-	<?php
 }
 
 
@@ -187,9 +200,6 @@ function modifierVisiteurs(){
 			$_POST['ville'],
 			$_POST['idVisiteurs']
 		));
-	?>
-	<p>Le visiteur numéro <?php echo $_POST['idVisiteurs'];?> à bien été mofidier</p>
-	<?php
 } 
 
 
@@ -216,10 +226,7 @@ function supprimerVisiteurs(){
 $req = $db->prepare('DELETE FROM visiteur WHERE idVisiteurs = ?');
 		//Récupère les informations à modifier et exécute la requête 
 	$req->execute(array(
-		$_POST['idVisiteurs'])) ?>
-<p> Le visiteur numéro <?php echo $_POST['idVisiteurs']; ?> à bien été suprrimer de la base de données </p>
-<?php
-	
+		$_POST['idVisiteurs']));
 }
 
 
@@ -273,9 +280,7 @@ function ajouterFrais(){
 		$_POST['idFraisForfait'],
 		$_POST['libelle'],
 		$_POST['montant']));
-		?>
-	<p> Le frais numéro <?php echo $_POST['idFraisForfait']; ?> à bien été ajouter à la base de données </p>
-	<?php 
+
 }
 
 	
@@ -302,9 +307,6 @@ $modif = $db->prepare('UPDATE fraisforfait SET libelle = ?, montant = ? WHERE id
 		$_POST['montant'],
 		$_POST['idFraisForfait']
 	));
-?>
-<p>Le frais numéro <?php echo $_POST['idFraisForfait'];?> à bien été modifier</p>
-<?php
 }
 
 
@@ -324,11 +326,9 @@ $req = $db->prepare('DELETE FROM fraisforfait WHERE idFraisForfait = ?');
 	$req->execute(array(
 		$_POST['idFraisForfait']
 	));
-?>
-<!-- confirmation du frais supprimer -->
-<p>Le frais numéro <?php echo $_POST['idFraisForfait']; ?> à bien été supprimer </p>
-<?php 
 }
+
+
 
 
 
@@ -385,7 +385,6 @@ $req = $db->prepare('INSERT INTO etat(idEtat, libelle) VALUES(?, ?)');
 		$_POST['idEtat'],
 		$_POST['libelle']
 	));
-	echo "L'etat à bien été ajouter ";
 }
 
 
@@ -408,7 +407,15 @@ $modif = $db->prepare('UPDATE etat SET libelle = ? WHERE idEtat = ?');
 		$_POST['libelle'],
 		$_POST['idEtat']
 	));
+	
 }
+
+
+
+
+
+
+
 
 
 //Supprimer etat 
@@ -429,9 +436,6 @@ $req = $db->prepare('DELETE FROM etat WHERE idEtat = ?');
 	$req->execute(array(
 		$_POST['idEtat']
 	));
-
-	echo "L'état à bien été supprimer";
-
 }
 
 ?>

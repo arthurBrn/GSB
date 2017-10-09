@@ -35,7 +35,7 @@
 	
 	<div id="form">
 		<fieldset>
-			<form name="frmFormulaire"action="../models/Modifier/priveModifEtatGSB.php" method=POST onSubmit="return verif_formulaire()">
+			<form name="frmFormulaire"action="/index.php" method=POST onSubmit="return verif_formulaire()">
 				<p>Rentrer le numéro de l'etat que vous souhaitez modifier : </p>
 					<input type="text" name="idEtat"></input>
 	</br>

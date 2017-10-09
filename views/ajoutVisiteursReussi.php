@@ -1,7 +1,7 @@
 <fieldset>
 			<?php
 				//htmlspecialchars est une fonction qui permet que les caractères taper dans les champs soient affichable mais ne se transforme pas en pop_up.
-				echo "Bonjour " . htmlspecialchars($_POST['prenom']) . ", bienvenu dans notre espace membre !";
+				echo "Le visiteur " . htmlspecialchars($_POST['prenom']) . " à bien été ajouter à la base de donnée.";
 				echo "<br><br>";
 				echo "Numéro : " . htmlspecialchars($_POST['idVisiteurs']);
 				echo "<br>";

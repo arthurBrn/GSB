@@ -33,7 +33,7 @@ else{
 	// isset --> détermine si une varibale est définie et si elle est différente de null
 if((isset($_POST['idVisiteurs'])) && (isset($_POST['nom'])) && (isset($_POST['prenom'])) && (isset($_POST['login'])) && (isset($_POST['mdp'])) && (isset($_POST['adresse'])) && (isset($_POST['cp'])) && (isset($_POST['ville']))){
 	envoyer();
-	inscriptionReussi();
+	ajoutVisiteursReussi();
 }
 
 
@@ -93,6 +93,7 @@ catch(Exception $e){
 //VISITEURS 
 if(isset($_POST['idVisiteurs'])){
 	suppVisiteurs();
+	supprVisiteursReussi();
 }
 
 
@@ -102,6 +103,7 @@ if(isset($_POST['idVisiteurs']) && isset($_POST['nom']) && isset($_POST['prenom'
 
 if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['ville']) && isset($_POST['idVisiteurs'])){
 	modifVisiteurs();
+	modifVisiteursReussi();
 }
 
 
@@ -126,6 +128,7 @@ if(isset($_POST['idFraisForfait'])){
 //Ajouter
 if(isset($_POST['idEtat']) && isset($_POST['libelle'])){
 	ajoutEtat();
+	ajoutEtatReussi();
 }
 //Modifier 
 if(isset($_POST['libelle']) && isset($_POST['idEtat'])){

@@ -32,7 +32,7 @@
 <div id="form">
 <h2>Connexion</h2>
 	<fieldset>
-		<form name = "frmFormulaire" action="index.php" method=POST onSubmit="return verif_formulaire()">
+		<form name = "frmFormulaire" action="/index.php" method=POST onSubmit="return verif_formulaire()">
 			</br>
 				<p>Login</p>
 					<input type="text" name="txtLogin"></input>

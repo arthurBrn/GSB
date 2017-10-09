@@ -29,8 +29,6 @@ include("C:\wamp64\www\Controleur\conBDD.php");
 </br>
 <h5>Consulter vos frais </h5>
 
-}
-$reponse->closeCursor(); //termine le traitement de la requête 
-?>
+
 </body>
 </html>

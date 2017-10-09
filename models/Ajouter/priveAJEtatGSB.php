@@ -1,12 +1,3 @@
-<?php
-include("/controller/conBDD.php");
-?>
-
-
-<?php 
-	session_start();
-?>
-
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=yes" />
@@ -35,3 +26,4 @@ include("/controller/conBDD.php");
 
 </body>
 </html>
+
