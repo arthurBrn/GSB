@@ -13,7 +13,7 @@ include("C:\wamp64\www\Controleur\conBDD.php");
 	<meta name="viewport" content="width=device-width, user-scalable=yes" />
     <meta charset="utf-8">
     <title>Consulter frais</title>
-    <link rel="stylesheet" href="C:/wamp64/www/CodeIgniter-3.1.5/application/views/styleGSB.css">
+    <link rel="stylesheet" href="/views/styleGSB.css">
     <script src="script.js"></script>
 	<link type="image/x-icon" href="logoGSB.JPG" rel="icon"/>
     <style type="text/css"> 
@@ -22,7 +22,7 @@ include("C:\wamp64\www\Controleur\conBDD.php");
 </head>
 <body>
 	<div id="class1">
-		<a href="C:/wamp64/www/CodeIgniter-3.1.5/application/views/index.html">
+		<a href="C:/wamp64/www/CodeIgniter-3.1.5/application/views/indexVue.php">
 			<h4>GSB</h4>
 		</a>
 	</div>

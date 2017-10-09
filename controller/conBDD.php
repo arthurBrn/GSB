@@ -20,6 +20,11 @@ function tableauAdmin(){
 	require "/views/tableauAdmin.php";
 }
 
+function inscription(){
+// Fonction qui renoie à la page d'inscription 
+	require "/views/inscriptionGSB.php";
+}
+
 // Récapitule les données saisie dans le formulaire d'inscription, avec message de validation 
 function inscriptionReussi(){
 	require "/views/envoyerGSB.php";
@@ -87,16 +92,4 @@ function modifEtat(){
 function suppEtat(){
 	supprimerEtat();
 }
-
-
-
-
-function inscription(){
-// Fonction qui renoie à la page d'inscription 
-	require "/views/inscriptionGSB.php";
-}
-
-
-
-
 ?>

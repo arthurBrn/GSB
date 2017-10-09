@@ -73,7 +73,7 @@
 						</a>
 					</td>
 					<td>
-						<a href="http://localhost/Vue/Modifier/priveModifierFraisForfaitGSB.php">
+						<a href="../views/Modifier/priveModifierFraisForfaitGSB.php">
 							<h4>Modifier frais </h4>
 						</a>
 					</td>

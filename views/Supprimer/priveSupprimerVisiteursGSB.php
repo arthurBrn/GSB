@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=yes" />
     <meta charset="utf-8">
     <title>Supprimer visiteurs</title>
-    <link rel="stylesheet" href="../Vue/protectGSB.css">
+    <link rel="stylesheet" href="/views/protectGSB.css">
     <script src="script.js"></script>
 	<link type="image/x-icon" href="logoGSB.JPG" rel="icon"/>
     <style type="text/css"> 
@@ -28,14 +28,14 @@
 </head>
 <body>
 	<div id="class1">
-		<a href="../views/index.html">
+		<a href="/views/indexVue.php">
 			<h4>GSB<h4>
 		</a>
 	</div>
 	<h6>Supprimer visiteurs</h6>
 	<div id="form">
 		<fieldset>
-			<form name="frmFormulaire" action="../models/Supprimer/priveSupprVisiteurGSB.php" method=POST onSubmit="return verif_formulaire()">
+			<form name="frmFormulaire" action="/index.php" method=POST onSubmit="return verif_formulaire()">
 				<p>Saisir le numéro du visiteur que vous souhaitez supprimer</p>
 				<input type="text" name ="idVisiteurs" id="idVisiteurs" ></input>
 	</br></br>

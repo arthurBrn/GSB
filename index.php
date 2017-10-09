@@ -88,4 +88,54 @@ try{
 catch(Exception $e){
 	die('Erreurs : ' . $e->getMessage());
 }
+
+
+//VISITEURS 
+if(isset($_POST['idVisiteurs'])){
+	suppVisiteurs();
+}
+
+
+if(isset($_POST['idVisiteurs']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['ville'])){
+	ajoutVisiteurs();
+}	
+
+if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['login']) && isset($_POST['mdp']) && isset($_POST['adresse']) && isset($_POST['cp']) && isset($_POST['ville']) && isset($_POST['idVisiteurs'])){
+	modifVisiteurs();
+}
+
+
+// FRAIS 
+//Ajouter 
+if(isset($_POST['idFraisForfait']) && isset($_POST['libelle']) && isset($_POST['montant'])){
+	ajoutFrais();
+}
+ 
+ //Modifier 
+if(isset($_POST['libelle']) && isset($_POST['montant']) && isset($_POST['idFraisForfait'])){
+	modifFrais();
+}
+
+//Supprimer 
+if(isset($_POST['idFraisForfait'])){
+	suppFrais();
+}
+
+//Etat
+
+//Ajouter
+if(isset($_POST['idEtat']) && isset($_POST['libelle'])){
+	ajoutEtat();
+}
+//Modifier 
+if(isset($_POST['libelle']) && isset($_POST['idEtat'])){
+	modifEtat();
+}
+
+//Supprimer 
+if(isset($_POST['idEtat'])){
+	suppEtat();
+}
+
+
 	?>

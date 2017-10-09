@@ -1,12 +1,9 @@
-
-
-<!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=yes" />
     <meta charset="utf-8">
     <title>Modifier frais forfait</title>
-    <link rel="stylesheet" href="../views/protectGSB.css">
+    <link rel="stylesheet" href="/views/protectGSB.css">
     <script src="script.js"></script>
 	<link type="image/x-icon" href="logoGSB.JPG" rel="icon"/>
     <style type="text/css"> 
@@ -29,7 +26,7 @@
 </head>
 <body>
 	<div id="class1">
-		<a href="../views/index.html">
+		<a href="../views/indexVue.php">
 			<h4>GSB<h4>
 		</a>
 	</div>
@@ -38,7 +35,7 @@
 	
 	<div id="form">
 		<fieldset>
-			<form name="frmFormulaire" action="../models/Modifier/priveModifFF1GSB.php" method=POST onSubmit="return verif_formulaire()">
+			<form name="frmFormulaire" action="/index.php" method=POST onSubmit="return verif_formulaire()">
 				<p>Numéro du frais que vous souhaitez modifier : </p>
 					<input type="text" name="idFraisForfait"></input>
 	</br>

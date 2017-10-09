@@ -1,5 +1,5 @@
 <?php
-include("../controller/conBDD.php");
+include("/controller/conBDD.php");
 ?>
 
 <?php 
@@ -12,7 +12,7 @@ include("../controller/conBDD.php");
 	<meta name="viewport" content="width=device-width, user-scalable=yes" />
     <meta charset="utf-8">
     <title>Consulter visiteurs</title>
-    <link rel="stylesheet" href="../views/protectGSB.css">
+    <link rel="stylesheet" href="/views/protectGSB.css">
     <script src="script.js"></script>
 	<link type="image/x-icon" href="logoGSB.JPG" rel="icon"/>
     <style type="text/css"> 
@@ -22,7 +22,7 @@ include("../controller/conBDD.php");
 <body>
 
 	<div id="class1">
-		<a href="../views/index.html">
+		<a href="../views/indexVue.php">
 			<h4>GSB<h4>
 		</a>
 	</div>
