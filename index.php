@@ -47,35 +47,8 @@ try{
 		session_destroy ();
 	}
 	else if(isset($_POST['txtLogin']) && isset($_POST['txtMdp']) && $_POST['txtLogin']!="" && $_POST['txtMdp']!="") {	
-		$source = "mysql:host=localhost;dbname=gsbV2";
-		$utilisateur = "root";
-		$mot_de_passe = "fdbcounter";
-		$db = new PDO($source, $utilisateur, $mot_de_passe);
-		$sql_select = "SELECT idVisiteurs, nom, prenom, adresse, cp, ville, dateEmbauche FROM visiteur WHERE login='".$_POST['txtLogin']."' AND mdp='".$_POST['txtMdp']."';";
-		$st = $db->prepare($sql_select);
-		$st->execute();
-		$lignes = $st->fetch();
-	
-		if(count($lignes[0]) == 1){
-			$_SESSION['login'] = $_POST['txtLogin'];
-			$_SESSION['mdp'] = $_POST['txtMdp'];
-			$_SESSION['idVisiteurs'] = $lignes[0];
-			$_SESSION['nom'] = $lignes[1];
-			$_SESSION['prenom'] = $lignes[2];
-			$_SESSION['adresse'] = $lignes[3];
-			$_SESSION['cp'] = $lignes[4];
-			$_SESSION['ville'] = $lignes[5];
-			$_SESSION['dateEmbauche'] = $lignes[6];
-			$connecte = true;
-				echo "<h2>Connecté</h2>";
-				echo "<p>Bonjour ".$_SESSION['prenom']." ".$_SESSION['nom']."".", vous êtes connecté(e)</p>";
-				
-				?>
-				<a href="../views/indexVue.php"><p>Retour à laccueil</a></p>
-				<a href="../views/tableauAdmin.php"><p>Tableau d'administration</p></a>
-				<?php
-		}
-						
+		controleCo();
+		}				
 	else {
 		echo '<script type="text/javascript">alert("Impossible de vous connecter.");</script>';
 	}
@@ -84,7 +57,7 @@ try{
 		$db = null;
 		$lignes = null;
 }
-}
+
 catch(Exception $e){
 	die('Erreurs : ' . $e->getMessage());
 }

@@ -27,16 +27,15 @@ function bdd(){
 
 
 function testConnexion(){
-		$source = "mysql:host=localhost;dbname=gsbV2";
-		$utilisateur = "root";
-		$mot_de_passe = "fdbcounter";
-		$db = new PDO($source, $utilisateur, $mot_de_passe);
-		$sql_select = "SELECT idVisiteurs, nom, prenom, adresse, cp, ville, dateEmbauche FROM visiteur WHERE login='".$_POST['txtLogin']."' AND mdp='".$_POST['txtMdp']."';";
-		$st = $db->prepare($sql_select);
-		$st->execute();
-		$lignes = $st->fetch();
-		
-		return $lignes;
+	$source = "mysql:host=localhost;dbname=gsbV2";
+	$utilisateur = "root";
+	$mot_de_passe = "fdbcounter";
+	$db = new PDO($source, $utilisateur, $mot_de_passe);
+	$sql_select = "SELECT idVisiteurs, nom, prenom, adresse, cp, ville, dateEmbauche FROM visiteur WHERE login='".$_POST['txtLogin']."' AND mdp='".$_POST['txtMdp']."';";
+	$st = $db->prepare($sql_select);
+	$st->execute();
+	$lignes = $st->fetch();
+	return $lignes;
 }
 
 

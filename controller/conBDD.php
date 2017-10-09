@@ -16,9 +16,9 @@ function connexion(){
 }
 
 function controleCo(){
-$lignes = textConnexion();
-if($lignes[0] != null){
-$_SESSION['login'] = $_POST['txtLogin'];
+$lignes = testConnexion();
+	if($lignes[0] != null){
+		$_SESSION['login'] = $_POST['txtLogin'];
 			$_SESSION['mdp'] = $_POST['txtMdp'];
 			$_SESSION['idVisiteurs'] = $lignes[0];
 			$_SESSION['nom'] = $lignes[1];
@@ -30,11 +30,11 @@ $_SESSION['login'] = $_POST['txtLogin'];
 			$connecte = true;
 				echo "<h2>Connecté</h2>";
 				echo "<p>Bonjour ".$_SESSION['prenom']." ".$_SESSION['nom']."".", vous êtes connecté(e)</p>";
-			// require de la vue de connexion 
-}
-else{
-	echo "Erreur de connexion";
-}
+			require"/views/tableauAdmin.php";
+	}
+	else{
+		require "/views/erreurCo.php";
+	}
 }
 
 
